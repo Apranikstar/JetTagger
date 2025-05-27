@@ -33,6 +33,8 @@ cp /cvmfs/sw.hsf.org/key4hep/releases/2025-01-28/x86_64-almalinux9-gcc14.2.0-opt
 
 ```bash
 cp /eos/experiment/fcc/hh/utils/pythiacards//p8_pp_default.cmd card.cmd
+cp /eos/experiment/fcc/hh/utils/edm4hep_output_config.tcl .
+
 ```
 
 ---
