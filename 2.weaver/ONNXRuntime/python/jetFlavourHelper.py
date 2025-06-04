@@ -7,8 +7,8 @@ ROOT.gROOT.SetBatch(True)
 class JetFlavourHelper:
     def __init__(self, coll, jet, jetc,njet, tag=""):
 
-        self.jet = jet[0:njet] #sliced to pick the two leading jets
-        self.const = jetc[0:njet] #sliced to pick the two leading jets
+        self.jet = jet   #[0:njet] #sliced to pick the two leading jets
+        self.const = jetc #[0:njet] #sliced to pick the two leading jets
 
         self.tag = tag
         if tag != "":
