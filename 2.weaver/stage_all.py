@@ -53,7 +53,8 @@ def main():
     
 
     flavor_to_process = {
-    "qq": "jj",  # THIS is the fix!
+    "jj": "qq",  # THIS is the fix!
+    "qq": "qq",    
     "bb": "bb",
     "cc": "cc",
     "ss": "ss",
