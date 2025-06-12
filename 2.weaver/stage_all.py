@@ -120,7 +120,7 @@ def main():
                 commands_stage2.append(cmd_stage2)
 
             # Run stage 2 in parallel using ProcessPoolExecutor for better CPU usage
-            with concurrent.futures.ProcessPoolExecutor(max_workers=ncpus) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=ncpus) as executor:
                 futures = [executor.submit(run_command, cmd) for cmd in commands_stage2]
                 concurrent.futures.wait(futures)
 
