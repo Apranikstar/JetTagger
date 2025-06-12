@@ -55,7 +55,7 @@ def main():
             sample_f = sample.replace("XX", f)
             edm_files = "{}/{}/*.root".format(indir, sample_f)
             cmd_stage1 = (
-                "fccanalysis run examples/FCCee/weaver/stage1_gen.py --output {} --files-list {} --ncpus {}".format(
+                "fccanalysis run stage1.py --output {} --files-list {} --ncpus {}".format(
                     stage1_files[f], edm_files, ncpus
                 )
             )
@@ -84,7 +84,7 @@ def main():
                 nstart = i * nevents_per_thread
                 nend = nstart + nevents_per_thread
 
-                cmd_stage2 = "python examples/FCCee/weaver/stage2.py {} {} {} {}".format(
+                cmd_stage2 = "python stage2.py {} {} {} {}".format(
                     stage1_files[f], stage2_files[i], nstart, nend
                 )
 
