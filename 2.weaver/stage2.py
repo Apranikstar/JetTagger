@@ -60,7 +60,7 @@ else:
     print("ERROR: could not infer jet flavor from file name")
     str_err = "ERROR: please provide input file containing: "
     for f in flavors:
-        str_err += "H{}{} ".format(f, f)
+        str_err += "_{}{} ".format(f, f)
 
 ## output jet-wise tree
 out_root = TFile(output_file, "RECREATE")
