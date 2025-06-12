@@ -50,7 +50,7 @@ maxn = 5000
 match_flavor = dict()
 for f in flavors:
     match_flavor[f] = False
-    if "H{}{}".format(f, f) in input_file:
+    if "_{}{}_".format(f, f) in input_file:
         match_flavor[f] = True
 
 if True in match_flavor.values():
