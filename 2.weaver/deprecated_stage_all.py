@@ -8,6 +8,16 @@ import time
 import concurrent.futures
 import ROOT
 
+def get_process_from_sample(sample):
+    # Assume sample is like mgp8_pp_tt_HT_2000_100000_5f_84TeV
+    # You want to extract 'tt' from the string
+    # The flavor is the part after 'mgp8_pp_' and before '_HT'
+    import re
+    match = re.search(r"mgp8_pp_(.+?)_HT", sample)
+    if match:
+        return match.group(1)
+    else:
+        raise ValueError(f"Could not extract process from sample name: {sample}")
 # ________________________________________________________________________________
 def main():
     parser = argparse.ArgumentParser()
@@ -22,11 +32,8 @@ def main():
         help="Path to output directory",
         default=os.path.join(os.getcwd(), "output"),
     )
-    parser.add_argument(
-        "--sample",
-        help="Sample name template (use {process} as placeholder)",
-        default="mgp8_pp_{process}_HT_2000_100000_5f_84TeV",
-    )
+    parser.add_argument("--sample", help="sample name", default="mgp8_pp_tt_HT_2000_100000_5f_84TeV")
+
     parser.add_argument("--ncpus", help="Number of CPUs", type=int, default=64)
     parser.add_argument(
         "--opt",
@@ -42,10 +49,12 @@ def main():
     opt = args.opt
 
     # Hardcoded flavors list
-    flavors = ["bb", "cc", "ss", "gg", "qq", "tautau", "tt"]
+    #flavors = ["bb", "cc", "ss", "gg", "qq", "tautau", "tt"]
+    
 
     flavor_to_process = {
-    "qq": "jj",  # THIS is the fix!
+    "jj": "qq",  # THIS is the fix!
+    "qq": "qq",    
     "bb": "bb",
     "cc": "cc",
     "ss": "ss",
@@ -53,6 +62,10 @@ def main():
     "tautau": "tautau",
     "tt": "tt",
 }
+    process = get_process_from_sample(sample)
+    if process not in flavor_to_process:
+        raise ValueError(f"Process {process} not recognized in flavor_to_process mapping.")
+    proc_name = flavor_to_process[process]
 
     outtmpdir = os.path.join(os.getcwd(), "tmp")
 
@@ -64,20 +77,16 @@ def main():
 
     # Prepare stage1 filenames
     #stage1_files = {f: f"{outtmpdir}/stage1_H{f}.root" for f in flavors}
-    stage1_files = {
-    f: f"{outtmpdir}/stage1_{flavor_to_process[f]}.root" for f in flavors
-    }
-
-    for f in flavors:
-        #sample_f = sample.format(process=f)
-        sample_f = sample.format(process=flavor_to_process[f])
-        edm_files = f"{indir}/{sample_f}/*.root"
+    
+    stage1_files = f"{outtmpdir}/stage1_{proc_name}.root"
+    sample_f = sample.replace("XX", process)
+    edm_files = f"{indir}/{sample_f}/*.root"
 
         # Run stage 1
-        if opt in ["1", "3"]:
+    if opt in ["1", "3"]:
             cmd_stage1 = [
                 "fccanalysis", "run", "stage1.py",
-                "--output", stage1_files[f],
+                "--output", stage1_files,
                 "--files-list", edm_files,
                 "--ncpus", str(ncpus)
             ]
@@ -85,25 +94,25 @@ def main():
             subprocess.run(" ".join(cmd_stage1), shell=True, check=True)
 
         # Run stage 2
-        if opt in ["2", "3"]:
-            nevents = count_events(stage1_files[f])
+    if opt in ["2", "3"]:
+            nevents = count_events(stage1_files)
             nevents_per_thread = int(nevents / ncpus)
 
             stage2_files = {}
             commands_stage2 = []
-            stage2_final_file = f"{outtmpdir}/stage2_{f}.root"
-            stage2_wild_files = f"{outtmpdir}/stage2_{f}_*.root"
+            stage2_final_file = f"{outtmpdir}/stage2_{proc_name}.root"
+            stage2_wild_files = f"{outtmpdir}/stage2_{proc_name}_*.root"
             hadd_cmd = f"hadd -f {stage2_final_file} {stage2_wild_files}"
 
             for i in range(ncpus):
-                stage2_file = f"{outtmpdir}/stage2_{f}_{i}.root"
+                stage2_file = f"{outtmpdir}/stage2_{proc_name}_{i}.root"
                 stage2_files[i] = stage2_file
                 nstart = i * nevents_per_thread
                 nend = nstart + nevents_per_thread
 
                 cmd_stage2 = [
                     "python", "stage2.py",
-                    stage1_files[f],
+                    stage1_files,
                     stage2_file,
                     str(nstart),
                     str(nend),
@@ -111,7 +120,7 @@ def main():
                 commands_stage2.append(cmd_stage2)
 
             # Run stage 2 in parallel using ProcessPoolExecutor for better CPU usage
-            with concurrent.futures.ProcessPoolExecutor(max_workers=ncpus) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=ncpus) as executor:
                 futures = [executor.submit(run_command, cmd) for cmd in commands_stage2]
                 concurrent.futures.wait(futures)
 
@@ -125,7 +134,7 @@ def main():
 
             # Cleanup
             print("Cleaning up temporary files...")
-            for file_path in [stage2_final_file, stage1_files[f]]:
+            for file_path in [stage2_final_file, stage1_files]:
                 if os.path.exists(file_path):
                     os.remove(file_path)
             subprocess.run(f"rm -f {stage2_wild_files}", shell=True)
