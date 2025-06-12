@@ -8,7 +8,7 @@ this configuration file contains the:
 ## number of jets for exclusive clustering
 njets = 2
 ptcut = 50
-coneRadius = 0.4
+coneRadius = 0.5
 
 ## name of collections in EDM root files
 collections = {
