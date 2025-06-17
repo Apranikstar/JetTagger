@@ -57,7 +57,7 @@ class InclusiveJetClusteringHelper:
         )
 
         # run jet clustering with all reconstructed particles. ee_kt_algorithm, R=1.5, inclusive clustering, E-scheme
-        self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0,0 )({})".format(self.coneR, self.ptCut,pjetc)
+        self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0, 1 )({})".format(self.coneR, self.ptCut,pjetc)
         #self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0, 1)(pseudo_jets)".format(self.coneR, self.ptCut)
 
         # get the jets out of the struct
