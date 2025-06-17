@@ -2,6 +2,7 @@ import sys
 from array import array
 from ROOT import TFile, TTree
 from config import variables_pfcand, variables_jet, flavors
+from config import njets as NJ
 
 debug = False
 
@@ -102,6 +103,9 @@ for entry in range(n_start, n_final):
 
     njets = len(getattr(ev, branches_jet[0]))
 
+    ## 17 Jun code
+    if njets > NJ:
+        njets = NJ #end of code
     ## loop over jets
     for j in range(njets):
 
