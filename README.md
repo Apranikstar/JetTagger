@@ -36,7 +36,9 @@ python stage_plots.py --indir ./output --outdir ./plots/
 ```bash
 chmod +x run_tagger.sh
 ```
+Create logs directory:
 ```mkdir -p logs```
+Submit the job:
 ```condor_submit run_tagger.sub```
 
 
