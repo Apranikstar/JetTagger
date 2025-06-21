@@ -14,7 +14,7 @@ python stage_plots.py --indir ./output --outdir ./plots/
 
 Submitting job to HTCondor
 
-run_tagger.sh (replace <initials>/<user>/... with your PATH
+run_tagger.sh (replace `<initials>/<user>/...` with your PATH
 ```bash
 #!/bin/bash
 # File: run_tagger.sh
