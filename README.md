@@ -36,6 +36,21 @@ python stage_plots.py --indir ./output --outdir ./plots/
 ```bash
 chmod +x run_tagger.sh
 ```
+
+Next step:
+```vim run_tagger.sub```
+With this content:
+```ini
+executable = run_tagger.sh
+output     = logs/run_tagger.out
+error      = logs/run_tagger.err
+log        = logs/run_tagger.log
+request_cpus = 16
+request_memory = 4GB
++JobFlavour = "longlunch"
+queue
+```
+
 Create logs directory:
 ```mkdir -p logs```
 Submit the job:
