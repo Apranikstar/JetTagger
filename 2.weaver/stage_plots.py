@@ -206,7 +206,7 @@ def plot(sample_a, sample_b, histo_coll, var, params, outdir):
     ratio.SetLineStyle(2)
     ratio.SetLineWidth(4)
     ratio.SetMinimum(0.0)
-    ratio.SetMaximum(2.0)
+    ratio.SetMaximum(4.0)
     ratio.GetXaxis().SetLabelSize(0.08)
     ratio.GetXaxis().SetTitleSize(0.12)
     ratio.GetXaxis().SetTitleOffset(1.0)
