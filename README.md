@@ -31,7 +31,7 @@ python stage_all.py --indir /eos/experiment/fcc/hh/generation/DelphesEvents/fcc_
 python stage_all.py --indir /eos/experiment/fcc/hh/generation/DelphesEvents/fcc_v07/II/ --outdir /afs/cern.ch/work/<initials>/<user>/.../output/ --sample mgp8_pp_jj_HT_2000_100000_5f_84TeV --ncpus 16
 
 # Generate plots
-python stage_plots.py --indir /afs/cern.ch/work/h/hfatehi/JET/output --outdir /afs/cern.ch/work/h/hfatehi/JET/plots/
+python stage_plots.py --indir /afs/cern.ch/work/h/hfatehi/JET/output --outdir /afs/cern.ch/work/<initials>/<user>/.../plots/
 
 ```
 ```bash
@@ -54,6 +54,7 @@ queue
 
 Create logs directory:
 ```mkdir -p logs```
+```mkdir plots```
 
 Submit the job:
 ```condor_submit run_tagger.sub```
