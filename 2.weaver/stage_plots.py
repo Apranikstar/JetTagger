@@ -9,12 +9,12 @@ def main():
     parser.add_argument(
         "--indir",
         help="path input directory",
-        default="JetTagger/2.weaver/output",
+        default="/eos/user/...",
     )
     parser.add_argument(
         "--outdir",
         help="path output directory",
-        default="/eos/user/<Initials>/<user>/plots",
+        default="/eos/user/...",
     )
 
     args = parser.parse_args()
@@ -36,8 +36,8 @@ def main():
             "label": "MadGraph + Pythia8",
         }
     sample_b = {
-            "file": "{}/stage2_qq.root".format(input_dir),
-            "flavor": "q",
+            "file": "{}/stage2_jj.root".format(input_dir),
+            "flavor": "j",
             "label": "MadGraph + Pythia8",
         }
         # We read the tree from the file and create a RDataFrame.
@@ -206,7 +206,7 @@ def plot(sample_a, sample_b, histo_coll, var, params, outdir):
     ratio.SetLineStyle(2)
     ratio.SetLineWidth(4)
     ratio.SetMinimum(0.0)
-    ratio.SetMaximum(4.0)
+    ratio.SetMaximum(10.0)
     ratio.GetXaxis().SetLabelSize(0.08)
     ratio.GetXaxis().SetTitleSize(0.12)
     ratio.GetXaxis().SetTitleOffset(1.0)
@@ -259,4 +259,8 @@ def plot(sample_a, sample_b, histo_coll, var, params, outdir):
     figpath = "{}/{}_{}.png".format(outdir, sample_a["flavor"], var)
     c.SaveAs(figpath)
 
+
+# _______________________________________________________________________________________
+if __name__ == "__main__":
+    main()
 
