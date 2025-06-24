@@ -1,64 +1,68 @@
-data:
-  - file: "/database/stage2_tt.root"
-    tree: "tree"
-  - file: "/database/stage2_jj.root"
-    tree: "tree"
 
-input_names:  # Per-jet features (global jet-level features)
-  - jet_p
-  - jet_e
-  - jet_mass
-  - jet_phi
-  - jet_theta
-  - jet_nconst
-  - jet_nmu
-  - jet_nel
-  - jet_nchad
-  - jet_ngamma
-  - jet_nnhad
-  - jet_npfcand
+preprocess:
+  ### method: [manual, auto] - whether to use manually specified parameters for variable standardization
+  method: auto
+  ### data_fraction: fraction of events to use when calculating the mean/scale for the standardization
+  data_fraction: 0.5
 
-pf_features:  # Per-particle (constituent) features
-  - pfcand_erel_log
-  - pfcand_thetarel
-  - pfcand_phirel
-  - pfcand_dptdpt
-  - pfcand_detadeta
-  - pfcand_dphidphi
-  - pfcand_dxydxy
-  - pfcand_dzdz
-  - pfcand_dxydz
-  - pfcand_dphidxy
-  - pfcand_dlambdadz
-  - pfcand_dxyc
-  - pfcand_dxyctgtheta
-  - pfcand_phic
-  - pfcand_phidz
-  - pfcand_phictgtheta
-  - pfcand_cdz
-  - pfcand_cctgtheta
-  - pfcand_charge
-  - pfcand_isMu
-  - pfcand_isEl
-  - pfcand_isChargedHad
-  - pfcand_isGamma
-  - pfcand_isNeutralHad
-  - pfcand_type
-  - pfcand_dxy
-  - pfcand_dz
-  - pfcand_btagSip2dVal
-  - pfcand_btagSip2dSig
-  - pfcand_btagSip3dVal
-  - pfcand_btagSip3dSig
-  - pfcand_btagJetDistVal
-  - pfcand_btagJetDistSig
-  - pfcand_e
-  - pfcand_p
-  - pfcand_theta
-  - pfcand_phi
 
-label_names:
-  - recojet_isT  # 1 = top jet, 0 = other jets
+inputs:
+  jet_features:
+    - jet_p
+    - jet_e
+    - jet_mass
+    - jet_phi
+    - jet_theta
+    - jet_nconst
+    - jet_nmu
+    - jet_nel
+    - jet_nchad
+    - jet_ngamma
+    - jet_nnhad
+    - jet_npfcand
+  pf_features:  # Per-particle (constituent) features
+    - pfcand_erel_log
+    - pfcand_thetarel
+    - pfcand_phirel
+    - pfcand_dptdpt
+    - pfcand_detadeta
+    - pfcand_dphidphi
+    - pfcand_dxydxy
+    - pfcand_dzdz
+    - pfcand_dxydz
+    - pfcand_dphidxy
+    - pfcand_dlambdadz
+    - pfcand_dxyc
+    - pfcand_dxyctgtheta
+    - pfcand_phic
+    - pfcand_phidz
+    - pfcand_phictgtheta
+    - pfcand_cdz
+    - pfcand_cctgtheta
+    - pfcand_charge
+    - pfcand_isMu
+    - pfcand_isEl
+    - pfcand_isChargedHad
+    - pfcand_isGamma
+    - pfcand_isNeutralHad
+    - pfcand_type
+    - pfcand_dxy
+    - pfcand_dz
+    - pfcand_btagSip2dVal
+    - pfcand_btagSip2dSig
+    - pfcand_btagSip3dVal
+    - pfcand_btagSip3dSig
+    - pfcand_btagJetDistVal
+    - pfcand_btagJetDistSig
+    - pfcand_e
+    - pfcand_p
+    - pfcand_theta
+    - pfcand_phi
+
+labels:
+  type: simple 
+  value: [recojet_isT, recojet_isJ]
+
 
 auxiliary_names:
   - recojet_isG
