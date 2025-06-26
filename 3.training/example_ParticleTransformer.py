@@ -17,16 +17,8 @@ class ParticleTransformerWrapper(torch.nn.Module):
     def no_weight_decay(self):
         return {'mod.cls_token', }
 
-    def forward(self, features, lorentz_vectors=None, mask=None):
-        # Provide default dummy tensors if None
-        if lorentz_vectors is None:
-            # shape: (batch_size, num_particles, 4), here 4 can be zeros
-            lorentz_vectors = torch.zeros(features.shape[0], features.shape[1], 4, device=features.device)
-        if mask is None:
-            # shape: (batch_size, num_particles), ones mean keep all particles
-            mask = torch.ones(features.shape[0], features.shape[1], dtype=torch.bool, device=features.device)
+    def forward(self, points, features, lorentz_vectors, mask):
         return self.mod(features, v=lorentz_vectors, mask=mask)
-
 
 
 def get_model(data_config, **kwargs):
