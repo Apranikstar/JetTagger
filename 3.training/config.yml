@@ -7,19 +7,7 @@ preprocess:
 
 
 inputs:
-  jet_features:
-    - jet_p
-    - jet_e
-    - jet_mass
-    - jet_phi
-    - jet_theta
-    - jet_nconst
-    - jet_nmu
-    - jet_nel
-    - jet_nchad
-    - jet_ngamma
-    - jet_nnhad
-    - jet_npfcand
+
   pf_features:  # Per-particle (constituent) features
     - pfcand_erel_log
     - pfcand_thetarel
@@ -62,6 +50,23 @@ inputs:
 labels:
   type: simple 
   value: [recojet_isT, recojet_isJ]
+
+observers:
+  jet_features:
+    - jet_p
+    - jet_e
+    - jet_mass
+    - jet_phi
+    - jet_theta
+    - jet_nconst
+    - jet_nmu
+    - jet_nel
+    - jet_nchad
+    - jet_ngamma
+    - jet_nnhad
+    - jet_npfcand
+    
+  
 
 
 auxiliary_names:
