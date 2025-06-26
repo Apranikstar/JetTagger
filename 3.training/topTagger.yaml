@@ -3,7 +3,7 @@ preprocess:
   data_fraction: 0.001
 
 inputs:
-  - name: pf_features
+  pf_features:
     vars:
       - pfcand_erel_log
       - pfcand_thetarel
@@ -46,20 +46,4 @@ inputs:
 
 labels:
   type: simple
-  value: recojet_isT
-
-
-#observers:
-  #jet_features:
-    #- jet_p
-    #- jet_e
-    #- jet_mass
-    #- jet_phi
-    #- jet_theta
-    #- jet_nconst
-    #- jet_nmu
-    #- jet_nel
-    #- jet_nchad
-    #- jet_ngamma
-    #- jet_nnhad
-    #- jet_npfcand
+  value: [recojet_isT]
