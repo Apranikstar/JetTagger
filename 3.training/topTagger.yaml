@@ -49,17 +49,17 @@ labels:
   value: recojet_isT
 
 
-observers:
-  jet_features:
-    - jet_p
-    - jet_e
-    - jet_mass
-    - jet_phi
-    - jet_theta
-    - jet_nconst
-    - jet_nmu
-    - jet_nel
-    - jet_nchad
-    - jet_ngamma
-    - jet_nnhad
-    - jet_npfcand
+#observers:
+  #jet_features:
+    #- jet_p
+    #- jet_e
+    #- jet_mass
+    #- jet_phi
+    #- jet_theta
+    #- jet_nconst
+    #- jet_nmu
+    #- jet_nel
+    #- jet_nchad
+    #- jet_ngamma
+    #- jet_nnhad
+    #- jet_npfcand
