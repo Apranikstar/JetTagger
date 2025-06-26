@@ -3,7 +3,7 @@ preprocess:
   ### method: [manual, auto] - whether to use manually specified parameters for variable standardization
   method: auto
   ### data_fraction: fraction of events to use when calculating the mean/scale for the standardization
-  data_fraction: 0.5
+  data_fraction: 0.05
 
 
 inputs:
@@ -67,12 +67,3 @@ observers:
     - jet_npfcand
     
   
-
-
-auxiliary_names:
-  - recojet_isG
-  - recojet_isQ
-  - recojet_isS
-  - recojet_isC
-  - recojet_isB
-  - recojet_isTAU
