@@ -45,7 +45,9 @@ inputs:
     length: 128
 
 labels:
+  type: simple
   value: recojet_isT
+
 
 observers:
   jet_features:
