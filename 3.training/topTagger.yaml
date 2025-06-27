@@ -74,7 +74,7 @@ labels:
 
 observers:
   jet_features:
-    length: 128
+    #length: 5000 check this later on
     vars:
       - jet_p
       - jet_e
