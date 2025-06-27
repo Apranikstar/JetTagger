@@ -69,7 +69,7 @@ inputs:
 
 labels:
   type: simple
-  value: [recojet_isT]
+  value: [recojet_isT, recojet_isJ]
 
 
 observers:
