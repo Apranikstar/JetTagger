@@ -1,5 +1,4 @@
 ```bash
-
  torchrun --standalone --nnodes=1 \
  --nproc_per_node=1 -m weaver.train \
  --data-train /afs/cern.ch/work/h/hfatehi/weaverTraining/database/stage2_*.root \
