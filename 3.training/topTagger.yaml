@@ -2,6 +2,15 @@ preprocess:
   method: auto
   data_fraction: 0.001
 
+new_variables:
+### [format] name: formula
+### can use functions from `math`, `np` (numpy), and `awkward` in the expression
+  pfmask    : ak.ones_like(pfcand_e)
+  pfcand_px : pfcand_p * np.sin(pfcand_theta) * np.cos(pfcand_phi)
+  pfcand_py : pfcand_p * np.sin(pfcand_theta) * np.sin(pfcand_phi)
+  pfcand_pz : pfcand_p * np.cos(pfcand_theta)
+
+
 inputs:
   pf_features:
     vars:
@@ -38,12 +47,44 @@ inputs:
       - pfcand_btagSip3dSig
       - pfcand_btagJetDistVal
       - pfcand_btagJetDistSig
-      - pfcand_e
-      - pfcand_p
       - pfcand_theta
       - pfcand_phi
     length: 128
 
+
+  pf_vectors:
+    length: 128
+    pad_mode: wrap
+    vars: 
+      - [pfcand_px, null]
+      - [pfcand_py, null]
+      - [pfcand_pz, null]
+      - [pfcand_e, null]
+      
+  pf_mask:
+    length: 128
+    pad_mode: constant
+    vars: 
+      - [pfmask, null]
+
 labels:
   type: simple
   value: [recojet_isT]
+
+
+observers:
+  jet_features:
+    length: 128
+    vars:
+      - jet_p
+      - jet_e
+      - jet_mass
+      - jet_phi
+      - jet_theta
+      - jet_nconst
+      - jet_nmu
+      - jet_nel
+      - jet_nchad
+      - jet_ngamma
+      - jet_nnhad
+      - jet_npfcand
