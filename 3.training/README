@@ -1,4 +1,6 @@
- torchrun --standalone --nnodes=1 \
+```bash
+
+torchrun --standalone --nnodes=1 \
  --nproc_per_node=1 -m weaver.train \
  --data-train /afs/cern.ch/work/h/hfatehi/weaverTraining/database/stage2_tt.root \
  --data-config /afs/cern.ch/work/h/hfatehi/weaverTraining/topTagger.yaml \
@@ -8,3 +10,4 @@
  --start-lr 1e-3 --num-epochs 20 \
  --optimizer ranger --fetch-step 0.01 \
  --backend nccl
+```
