@@ -49,11 +49,11 @@ inputs:
       - pfcand_btagJetDistSig
       - pfcand_theta
       - pfcand_phi
-    length: 128
+    length: 280
 
 
   pf_vectors:
-    length: 128
+    length: 280
     pad_mode: wrap
     vars: 
       - [pfcand_px, null]
@@ -62,7 +62,7 @@ inputs:
       - [pfcand_e, null]
       
   pf_mask:
-    length: 128
+    length: 280
     pad_mode: constant
     vars: 
       - [pfmask, null]
