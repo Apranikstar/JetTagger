@@ -11,15 +11,15 @@ new_variables:
   pfcand_pz : pfcand_p * np.cos(pfcand_theta)
 
   # Label for 8-class jet flavor classification: ["g", "q", "s", "c", "b", "t", "j", "tau"]
-  label: (
-    1 * recojet_isG +
-    2 * recojet_isQ +
-    3 * recojet_isS +
-    4 * recojet_isC +
-    5 * recojet_isB +
-    6 * recojet_isT +
-    7 * recojet_isJ +
-    8 * recojet_isTAU) - 1
+  label     : (
+    0 * ak.where(recojet_isG == 1, 1, 0) +
+    1 * ak.where(recojet_isQ == 1, 1, 0) +
+    2 * ak.where(recojet_isS == 1, 1, 0) +
+    3 * ak.where(recojet_isC == 1, 1, 0) +
+    4 * ak.where(recojet_isB == 1, 1, 0) +
+    5 * ak.where(recojet_isT == 1, 1, 0) +
+    6 * ak.where(recojet_isJ == 1, 1, 0) +
+    7 * ak.where(recojet_isTAU == 1, 1, 0))
 
 inputs:
   pf_features:
