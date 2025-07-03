@@ -9,18 +9,13 @@ new_variables:
   pfcand_px : pfcand_p * np.sin(pfcand_theta) * np.cos(pfcand_phi)
   pfcand_py : pfcand_p * np.sin(pfcand_theta) * np.sin(pfcand_phi)
   pfcand_pz : pfcand_p * np.cos(pfcand_theta)
-
-  # Label for 8-class jet flavor classification: ["g", "q", "s", "c", "b", "t", "j", "tau"]
+  valid_label_mask: ak.where((recojet_isJ + recojet_isT) == 1, 1, 0)
   label     : (
-    0 * ak.where(recojet_isG == 1, 1, 0) +
-    1 * ak.where(recojet_isQ == 1, 1, 0) +
-    2 * ak.where(recojet_isS == 1, 1, 0) +
-    3 * ak.where(recojet_isC == 1, 1, 0) +
-    4 * ak.where(recojet_isB == 1, 1, 0) +
-    5 * ak.where(recojet_isT == 1, 1, 0) +
-    6 * ak.where(recojet_isJ == 1, 1, 0) +
-    7 * ak.where(recojet_isTAU == 1, 1, 0))
-
+    0 * ak.where(recojet_isJ == 1, 1, 0) +
+    1 * ak.where(recojet_isT == 1, 1, 0))
+selection:
+  valid_label_mask == 1
+  
 inputs:
   pf_features:
     vars:
@@ -78,7 +73,7 @@ inputs:
 
 labels:
   type: simple
-  value: label
+  value: [label]
 
 observers:
   jet_features:
