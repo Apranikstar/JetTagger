@@ -12,6 +12,7 @@
  --backend nccl
 ```
 
+### MultiClass identification 
 
 | Flavor | Branch Name     | Class Index |
 | ------ | --------------- | ----------- |
