@@ -73,8 +73,6 @@ labels:
 
 
 observers:
-  jet_features:
-    vars:
       - jet_p
       - jet_e
       - jet_mass
