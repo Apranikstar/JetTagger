@@ -79,7 +79,7 @@ def main():
     #stage1_files = {f: f"{outtmpdir}/stage1_H{f}.root" for f in flavors}
     
     stage1_files = f"{outtmpdir}/stage1_{proc_name}.root"
-    sample_f = sample.replace("XX", process)
+    sample_f = sample.replace("XX", process) #This has no effect but you know the fear of fixing things that are not broken xD
     edm_files = f"{indir}/{sample_f}/*.root"
 
         # Run stage 1
