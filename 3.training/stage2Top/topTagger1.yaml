@@ -1,6 +1,6 @@
 preprocess:
   method: auto
-  data_fraction: 0.001
+  data_fraction: 1
 
 new_variables:
 ### [format] name: formula
