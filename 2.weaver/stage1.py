@@ -36,6 +36,7 @@ class RDFanalysis:
 
         ## define observables for tagger
         df = jetFlavourHelper.define(df)
+        #df = jetFlavourHelper.inference(weaver_preproc, weaver_model, df)
 
         ## compute invariant mass of two leading jets
         df = df.Define("jet_p4", "JetConstituentsUtils::compute_tlv_jets({})".format(jetClusteringHelper.jets))
