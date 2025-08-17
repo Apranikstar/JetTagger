@@ -54,8 +54,6 @@
       "pfcand_phictgtheta",
       "pfcand_cdz",
       "pfcand_cctgtheta",
-      "pfcand_mtof",
-      "pfcand_dndx",
       "pfcand_charge",
       "pfcand_isMu",
       "pfcand_isEl",
@@ -211,22 +209,6 @@
       "pfcand_cctgtheta": {
         "median": -9.0,
         "norm_factor": 0.1111111111111261,
-        "replace_inf_value": 0,
-        "lower_bound": -5,
-        "upper_bound": 5,
-        "pad": 0
-      },
-      "pfcand_mtof": {
-        "median": 0.07332593947649002,
-        "norm_factor": 5.140589694831398,
-        "replace_inf_value": 0,
-        "lower_bound": -5,
-        "upper_bound": 5,
-        "pad": 0
-      },
-      "pfcand_dndx": {
-        "median": 0.0,
-        "norm_factor": 0.72003525410647,
         "replace_inf_value": 0,
         "lower_bound": -5,
         "upper_bound": 5,
