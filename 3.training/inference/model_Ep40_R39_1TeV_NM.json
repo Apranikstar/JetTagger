@@ -331,12 +331,12 @@
   },
   "pf_vectors": {
     "var_names": [
-      "pfcand_vect_px",
-      "pfcand_vect_py",
-      "pfcand_vect_pz"
+      "pfcand_px",
+      "pfcand_py",
+      "pfcand_pz"
     ],
     "var_infos": {
-      "pfcand_vect_px": {
+      "pfcand_px": {
         "median": 0.0,
         "norm_factor": 1.0,
         "replace_inf_value": 0,
@@ -344,7 +344,7 @@
         "upper_bound": 5,
         "pad": 0
       },
-      "pfcand_vect_py": {
+      "pfcand_py": {
         "median": 0.0,
         "norm_factor": 1.0,
         "replace_inf_value": 0,
@@ -352,7 +352,7 @@
         "upper_bound": 5,
         "pad": 0
       },
-      "pfcand_vect_pz": {
+      "pfcand_pz": {
         "median": 0.0,
         "norm_factor": 1.0,
         "replace_inf_value": 0,
@@ -365,10 +365,10 @@
   },
   "pf_mask": {
     "var_names": [
-      "mask"
+      "pfmask"
     ],
     "var_infos": {
-      "mask": {
+      "pfmask": {
         "median": 1.0,
         "norm_factor": 1.0,
         "replace_inf_value": 0,
@@ -380,4 +380,3 @@
     "var_length": 280
   }
 }
-
