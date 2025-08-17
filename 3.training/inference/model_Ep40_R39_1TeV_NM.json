@@ -365,10 +365,10 @@
   },
   "pf_mask": {
     "var_names": [
-      "pf_mask"
+      "pfmask"
     ],
     "var_infos": {
-      "pf_mask": {
+      "pfmask": {
         "median": 1.0,
         "norm_factor": 1.0,
         "replace_inf_value": 0,
