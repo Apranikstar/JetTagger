@@ -56,6 +56,24 @@ public:
         return cast_constituent(jcs, ReconstructedParticle::get_pz);
     }
 
+    static rv::RVec<int> mask_pt_positive(
+    const rv::RVec<FCCAnalysesJetConstituents>& jcs)
+    {
+    rv::RVec<int> mask;
+    mask.reserve(jcs.size());
+    for (const auto &jc : jcs) {
+        auto px = ReconstructedParticle::get_px(jc)[0];
+        auto py = ReconstructedParticle::get_py(jc)[0];
+        float pt2 = px*px + py*py;
+        mask.push_back(pt2 > 0.0 ? 1 : 0);
+
+    }
+    return mask;
+    }
+
+    
+    
+
 };
 
 } // namespace JetConstituentsUtils
