@@ -89,7 +89,7 @@ class RDFanalysis:
         #     "event_invariant_mass",
         #     "JetConstituentsUtils::InvariantMass(jet_p4[0], jet_p4[1])",
         # )
-        df = df.Filter("event_njet == 2")
+        df = df.Filter("event_njet > 1")
         #df = df.Define("recoT", "scores_recojet_isT")
         #df = df.Filter("recoT > 0.90")
 
