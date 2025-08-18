@@ -12,15 +12,3 @@
  --backend nccl
 ```
 
-### MultiClass identification 
-
-| Flavor | Branch Name     | Class Index |
-| ------ | --------------- | ----------- |
-| g      | `recojet_isG`   | 0           |
-| q      | `recojet_isQ`   | 1           |
-| s      | `recojet_isS`   | 2           |
-| c      | `recojet_isC`   | 3           |
-| b      | `recojet_isB`   | 4           |
-| t      | `recojet_isT`   | 5           |
-| j      | `recojet_isJ`   | 6           |
-| tau    | `recojet_isTAU` | 7           |
