@@ -1,3 +1,6 @@
+##### DEPRECATED
+##### USE MODELS AND YAML FILE IN STAGE2TOP DIRECTORY.
+
 import torch
 from weaver.nn.model.ParticleTransformer import ParticleTransformer
 from weaver.utils.logger import _logger
