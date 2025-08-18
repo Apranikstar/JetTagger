@@ -21,7 +21,8 @@ run_tagger.sh (replace `<initials>/<user>/...` with your PATH
 # File: run_tagger.sh
 
 # Environment setup
-source /cvmfs/fcc.cern.ch/sw/latest/setup.sh
+#source /cvmfs/fcc.cern.ch/sw/latest/setup.sh
+source /cvmfs/sw.hsf.org/key4hep/setup.sh -r 2025-01-28
 
 # Clone your repository
 git clone https://github.com/Apranikstar/JetTagger.git
