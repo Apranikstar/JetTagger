@@ -56,8 +56,8 @@ class InclusiveJetClusteringHelper:
             part_px, part_py, part_pz, part_e
         )
 
-        self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0, 0 )({})".format(self.coneR, self.ptCut,pjetc)
-        #self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0, 1)(pseudo_jets)".format(self.coneR, self.ptCut)
+        #self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0, 0 )({})".format(self.coneR, self.ptCut,pjetc)
+        self.definition[_jet] = "JetClustering::clustering_antikt({}, 0, {}, 0, 1)(pseudo_jets)".format(self.coneR, self.ptCut)
 
         # get the jets out of the struct
         self.definition[jet] = "JetClusteringUtils::get_pseudoJets({})".format(_jet)
