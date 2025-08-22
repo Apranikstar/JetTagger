@@ -1,15 +1,15 @@
-processList = {
+# processList = {
 
-    # xsecs need to be scaled by 280/989 ...for xsec of ee -> H ...
+#     # xsecs need to be scaled by 280/989 ...for xsec of ee -> H ...
 
-    # Semileptonic processes
-    "mgp8_pp_jj_HT_2000_100000_5f_84TeV": {"fraction": 1,},
-    "mgp8_pp_tt_HT_2000_100000_5f_84TeV": {"fraction": 1,},
-}
+#     # Semileptonic processes
+#     "mgp8_pp_jj_HT_2000_100000_5f_84TeV": {"fraction": 1,},
+#     "mgp8_pp_tt_HT_2000_100000_5f_84TeV": {"fraction": 1,},
+# }
 
-outputDir = "./output"
-inputDir = "/eos/experiment/fcc/hh/generation/DelphesEvents/fcc_v07/II/"
-nCPUS = -1
+# outputDir = "./output"
+# inputDir = "/eos/experiment/fcc/hh/generation/DelphesEvents/fcc_v07/II/"
+# nCPUS = -1
 
 from config import (
     variables_pfcand,
