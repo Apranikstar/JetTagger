@@ -83,7 +83,12 @@ class RDFanalysis:
     # __________________________________________________________
     # Mandatory: output function, please make sure you return the branchlist as a python list
     def output():
-        branchList = ["sumTLVs1M", "sumTLVs2M", "event_invariant_mass"]
+        branches_pfcand = list(variables_pfcand.keys())
+        branches_jet = list(variables_jet.keys())
+        branches_event = list(variables_event.keys())
+
+        branchList = branches_event + branches_jet + branches_pfcand
+
         return branchList
 
 
