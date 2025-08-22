@@ -9,9 +9,6 @@ import concurrent.futures
 import ROOT
 
 def get_process_from_sample(sample):
-    # Assume sample is like mgp8_pp_tt_HT_2000_100000_5f_84TeV
-    # You want to extract 'tt' from the string
-    # The flavor is the part after 'mgp8_pp_' and before '_HT'
     import re
     match = re.search(r"mgp8_pp_(.+?)_(?:HT|Q)", sample)
     if match:
