@@ -9,6 +9,7 @@ this configuration file contains the:
 njets = 2
 ptcut = 100
 coneRadius = 0.39
+jetIMCut = [True, 175, 225]
 
 ## name of collections in EDM root files
 collections = {
