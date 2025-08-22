@@ -2,6 +2,7 @@ from config import (
     variables_pfcand,
     variables_jet,
     variables_event,
+    jetIMCut
 )
 
 from ONNXRuntime.python.jetFlavourHelper import JetFlavourHelper
@@ -41,6 +42,13 @@ class RDFanalysis:
         ## compute invariant mass of two leading jets
         df = df.Define("jet_p4", "JetConstituentsUtils::compute_tlv_jets({})".format(jetClusteringHelper.jets))
         df = df.Define("event_invariant_mass", "JetConstituentsUtils::InvariantMass(jet_p4[0], jet_p4[1])")
+        df = df.Redefine("jet_mass", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].M(), sumTLVs[1].M()})")
+        # jetIMCut = [True, 150, 200]
+        if jetIMCut[0]:
+            df = df.Filter("{} < jet_mass[0] && jet_mass[0] < {}".format(jetIMCut[1], jetIMCut[2]))
+            df = df.Filter("{} < jet_mass[1] && jet_mass[1] < {}".format(jetIMCut[1], jetIMCut[2]))
+        else:
+            pass
 
         return df
 
