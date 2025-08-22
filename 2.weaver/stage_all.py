@@ -13,7 +13,7 @@ def get_process_from_sample(sample):
     # You want to extract 'tt' from the string
     # The flavor is the part after 'mgp8_pp_' and before '_HT'
     import re
-    match = re.search(r"mgp8_pp_(.+?)_HT", sample)
+    match = re.search(r"mgp8_pp_(.+?)_(?:HT|Q)", sample)
     if match:
         return match.group(1)
     else:
