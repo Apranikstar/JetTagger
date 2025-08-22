@@ -67,16 +67,17 @@ class RDFanalysis:
 
         ## compute sum of four-momenta of constituents
         df = df.Define(
-            "sumTLVs1",
+            "sumTLVs",
             "JetConstituentsUtils::sum_tlv_constituents({})".format(
                 jetClusteringHelper.constituents
             ),
         )
         
         
-        df = df.Define("sumTLVs1M", "sumTLVs1[0].M()")
-        df = df.Define("sumTLVs2M", "sumTLVs1[1].M()")
-
+        df = df.Define("sumTLVs1M", "sumTLVs[0].M()")
+        df = df.Define("sumTLVs2M", "sumTLVs[1].M()")
+        df = df.Filter(" 125 < sumTLVs1M && sumTLVs1M < 225")
+        df = df.Filter(" 125 < sumTLVs2M && sumTLVs2M < 225")
         return df
 
     # __________________________________________________________
