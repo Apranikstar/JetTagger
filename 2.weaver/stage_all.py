@@ -61,6 +61,7 @@ def main():
     "gg": "gg",
     "tautau": "tautau",
     "tt": "tt",
+    "uuddssgg" : "qq",
 }
     process = get_process_from_sample(sample)
     if process not in flavor_to_process:
