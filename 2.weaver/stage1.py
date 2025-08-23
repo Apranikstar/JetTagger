@@ -47,6 +47,8 @@ class RDFanalysis:
         df = df.Redefine("jet_mass", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].M(), sumTLVs[1].M()})")
         df = df.Redefine("jet_e", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].E(), sumTLVs[1].E()})")
         df = df.Redefine("jet_p", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].P(), sumTLVs[1].P()})")
+        df = df.Redefine("jet_phi", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Phi(), sumTLVs[1].Phi()})")
+        df = df.Redefine("jet_theta", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Theta(), sumTLVs[1].Theta()})")
         # jetIMCut = [True, 150, 200]
         if jetIMCut[0]:
             df = df.Filter("{} < jet_mass[0] && jet_mass[0] < {}".format(jetIMCut[1], jetIMCut[2]))
