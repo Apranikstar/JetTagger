@@ -108,8 +108,8 @@ def process_root_file(
 # --- Example usage ---
 if __name__ == "__main__":
     tree = "events"
-    input_dir = "."
-    output_dir = "./processed_pt"
+    input_dir = "/eos/user/h/hfatehi/JetTagger/TESTPIPELINE/"
+    output_dir = "/eos/user/h/hfatehi/JetTagger/TESTPIPELINE/processedJets"
 
     for fname in os.listdir(input_dir):
         if fname.endswith(".root"):
