@@ -73,7 +73,7 @@ def process_root_file_to_parquet(
         labels = {
     "recojet_isG": 0, "recojet_isB": 0, "recojet_isC": 0,
     "recojet_isTHAD": 0, "recojet_isTLEP": 0, "recojet_isWHAD": 0,
-    "recojet_isZHAD": 0, "recojet_isTAU": 0, "recojet_isUUDDSS": 0
+    "recojet_isZHAD": 0,  "recojet_isUUDDSS": 0,#"recojet_isTAU": 0,
         }
 
 
@@ -95,8 +95,8 @@ def process_root_file_to_parquet(
             labels["recojet_isWHAD"] = [1] * num_jets_total
         elif "_zhadzhad_" in file_name:
             labels["recojet_isZHAD"] = [1] * num_jets_total
-        elif "_tautau_" in file_name:
-            labels["recojet_isTAU"] = [1] * num_jets_total
+        #elif "_tautau_" in file_name:
+        #    labels["recojet_isTAU"] = [1] * num_jets_total
         elif "_uudds_" in file_name:
             labels["recojet_isUUDDSS"] = [1] * num_jets_total
 
