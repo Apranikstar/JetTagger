@@ -11,7 +11,7 @@ processList = {
             
 }
 
-outputDir = "/eos/user/h/hfatehi/TESTPIPELINE/"
+outputDir = "/eos/user/h/hfatehi/JetTagger/TESTPIPELINE"
 inputDir = "/eos/experiment/fcc/hh/generation/DelphesEvents/fcc_v07/II_trackCov"
 nCPUS = -1
 
@@ -161,7 +161,7 @@ class RDFanalysis:
                 "pfcand_e", "pfcand_p", "pfcand_theta", "pfcand_phi", "pfcand_charge", "pfcand_type",
                 "pfcand_erel", "pfcand_erel_log", "pfcand_thetarel", "pfcand_phirel", 
  
-                "Bz",
+                #"Bz",
  
                 "pfcand_dxy", "pfcand_dz", "pfcand_phi0", "pfcand_C", "pfcand_ct",
                 "pfcand_dptdpt", "pfcand_dxydxy", "pfcand_dzdz", "pfcand_dphidphi", "pfcand_detadeta",
