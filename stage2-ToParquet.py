@@ -97,7 +97,7 @@ def process_root_file_to_parquet(
             labels["recojet_isZHAD"] = [1] * num_jets_total
         #elif "_tautau_" in file_name:
         #    labels["recojet_isTAU"] = [1] * num_jets_total
-        elif "_uudds_" in file_name:
+        elif "_uuddss_" in file_name:
             labels["recojet_isUUDDSS"] = [1] * num_jets_total
 
 
