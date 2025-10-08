@@ -71,10 +71,11 @@ def process_root_file_to_parquet(
         # --- Labels ---
         num_jets_total = (stop - start) * 2
         labels = {
-            "recojet_isG": 0, "recojet_isB": 0, "recojet_isTHAD": 0,
-            "recojet_isTLEP": 0, "recojet_isWHAD": 0, "recojet_isZHAD": 0,
-            "recojet_isTAU": 0, "recojet_isUUDDSS": 0
+    "recojet_isG": 0, "recojet_isB": 0, "recojet_isC": 0,
+    "recojet_isTHAD": 0, "recojet_isTLEP": 0, "recojet_isWHAD": 0,
+    "recojet_isZHAD": 0, "recojet_isTAU": 0, "recojet_isUUDDSS": 0
         }
+
 
         # Determine label based on file name
         for label in labels:
@@ -84,6 +85,8 @@ def process_root_file_to_parquet(
             labels["recojet_isG"] = [1] * num_jets_total
         elif "_bb_" in file_name:
             labels["recojet_isB"] = [1] * num_jets_total
+        elif "_cc_" in file_name:
+            labels["recojet_isC"] = [1] * num_jets_total
         elif "_thadthad_" in file_name:
             labels["recojet_isTHAD"] = [1] * num_jets_total
         elif "_tleptlep_" in file_name:
@@ -96,6 +99,7 @@ def process_root_file_to_parquet(
             labels["recojet_isTAU"] = [1] * num_jets_total
         elif "_uudds_" in file_name:
             labels["recojet_isUUDDSS"] = [1] * num_jets_total
+
 
         data_dict.update(labels)
 
