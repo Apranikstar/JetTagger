@@ -57,8 +57,7 @@ def process_root_file(
             for i in range(len(arr)):  # only within this chunk
                 jets_list.append(arr[i][leading_jet_index])
                 jets_list.append(arr[i][subleading_jet_index])
-            #max_len = max(len(jet) for jet in jets_list) if jets_list else 0
-            max_len = 500
+            max_len = max(len(jet) for jet in jets_list) if jets_list else 0
             num_jets = len(jets_list)
             jets_tensor = torch.zeros((num_jets, max_len), dtype=torch.float64)
             for i, jet in enumerate(jets_list):
