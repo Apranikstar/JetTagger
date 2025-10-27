@@ -25,7 +25,7 @@ collections = {
 }
 
 #### list of flavors f = g, q, c, s, ...(will look for input file name ccontaining "[Hff]")
-flavors = ["g", "q", "s", "c", "b","t", "j", "tau"]
+flavors = ["g", "uds", "c", "b", "thad", "tlep", "whad", "zhad" ]
 
 ## define here the branches to be stored in the output root files in addition to the predefined one
 ## only the name of the var is used here, the metadata is used in stage_plots
