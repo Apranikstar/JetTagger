@@ -1,17 +1,17 @@
 
 processList = {
-    "mgp8_pp_bb_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-     "mgp8_pp_cc_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-      "mgp8_pp_gg_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-       "mgp8_pp_thadthad_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-        "mgp8_pp_tleptlep_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-         "mgp8_pp_uuddss_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-          "mgp8_pp_whadwhad_PTmin_5000_5f_84TeV": {"fraction": 0.001},
-           "mgp8_pp_zhadzhad_PTmin_5000_5f_84TeV": {"fraction": 0.001},
+    "mgp8_pp_bb_PTmin_5000_5f_84TeV": {"fraction": 1},
+     "mgp8_pp_cc_PTmin_5000_5f_84TeV": {"fraction": 1},
+      "mgp8_pp_gg_PTmin_5000_5f_84TeV": {"fraction": 1},
+       "mgp8_pp_thadthad_PTmin_5000_5f_84TeV": {"fraction": 1},
+        "mgp8_pp_tleptlep_PTmin_5000_5f_84TeV": {"fraction": 1},
+         "mgp8_pp_uuddss_PTmin_5000_5f_84TeV": {"fraction": 1},
+          "mgp8_pp_whadwhad_PTmin_5000_5f_84TeV": {"fraction": 1},
+           "mgp8_pp_zhadzhad_PTmin_5000_5f_84TeV": {"fraction": 1},
             
 }
 
-outputDir = "/eos/user/h/hfatehi/JetTagger/TESTPIPELINE"
+outputDir = "/eos/user/h/hfatehi/FCC-hh-TopTagging"
 inputDir = "/eos/experiment/fcc/hh/generation/DelphesEvents/fcc_v07/II_trackCov"
 nCPUS = -1
 
@@ -130,22 +130,34 @@ class RDFanalysis:
         ##############################################################################################################
         df = df.Define("sumTLVs", "JetConstituentsUtils::sum_tlv_constituents(jetc)")
 
-        df = df.Define("jet_p", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].P(), sumTLVs[1].P()})")
-        df = df.Define("jet_e", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].E(), sumTLVs[1].E()})")
-        df = df.Define("jet_mass", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].M(), sumTLVs[1].M()})")
-        df = df.Define("jet_phi", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Phi(), sumTLVs[1].Phi()})")
-        df = df.Define("jet_theta", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Theta(), sumTLVs[1].Theta()})")
-        df = df.Define("jet_pT", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Pt(), sumTLVs[1].Pt()})")
-        df = df.Define("jet_eta", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Eta(), sumTLVs[1].Eta()})")
+        #df = df.Define("jet_p", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].P(), sumTLVs[1].P()})")
+        #df = df.Define("jet_e", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].E(), sumTLVs[1].E()})")
+        #df = df.Define("jet_mass", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].M(), sumTLVs[1].M()})")
+        #df = df.Define("jet_phi", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Phi(), sumTLVs[1].Phi()})")
+        #df = df.Define("jet_theta", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Theta(), sumTLVs[1].Theta()})")
+        #df = df.Define("jet_pT", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Pt(), sumTLVs[1].Pt()})")
+        #df = df.Define("jet_eta", "ROOT::VecOps::RVec<Double_t>({sumTLVs[0].Eta(), sumTLVs[1].Eta()})")
 
         df = df.Define("jet_nconst", "JetConstituentsUtils::count_consts(jetc)") 
-        ##
         df = df.Define(f"jet_nmu",    f"JetConstituentsUtils::count_type(pfcand_isMu)") 
         df = df.Define(f"jet_nel",    f"JetConstituentsUtils::count_type(pfcand_isEl)") 
         df = df.Define(f"jet_nchad",  f"JetConstituentsUtils::count_type(pfcand_isChargedHad)") 
         df = df.Define(f"jet_ngamma", f"JetConstituentsUtils::count_type(pfcand_isGamma)") 
         df = df.Define(f"jet_nnhad",  f"JetConstituentsUtils::count_type(pfcand_isNeutralHad)")
 
+##### new
+                # compute jet observables
+        df = df.Define("jet_p", "JetClusteringUtils::get_p(jets)")
+        df = df.Define("jet_px", "JetClusteringUtils::get_px(jets)")
+        df = df.Define("jet_py", "JetClusteringUtils::get_py(jets)")
+        df = df.Define("jet_pz", "JetClusteringUtils::get_pz(jets)")
+        df = df.Define("jet_pT", "JetClusteringUtils::get_pt(jets)")
+
+        df = df.Define("jet_e", "JetClusteringUtils::get_e(jets)")
+        df = df.Define("jet_mass", "JetClusteringUtils::get_m(jets)")
+        df = df.Define("jet_phi", "JetClusteringUtils::get_phi(jets)")
+        df = df.Define("jet_theta", "JetClusteringUtils::get_theta(jets)")
+        df = df.Define("jet_eta", "JetClusteringUtils::get_eta(jets)")
 
 
         return df
